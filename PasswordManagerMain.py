@@ -51,7 +51,8 @@ def get_Suggestion():
 		'otherSymbols': list("!@&%/?#.,")
 	}
 
-	passwordLength = int(input("Password Length: "))
+	passwordLength = 8#int(input("Password Length: "))
+
 
 	#Make list of all characters possible
 	allCharacters = []
@@ -62,6 +63,7 @@ def get_Suggestion():
 	#Suggest random password
 	suggestedPassword = ''.join(random.choices(allCharacters, k=passwordLength))
 	print(f"Suggested password: {suggestedPassword} \nFeel free to copy :)")
+	return suggestedPassword
 
 
 
@@ -200,8 +202,12 @@ def decrypt_Password(PwmDb, needed):
 
 		print("Decrypted Username:", decryptedUsername)
 		print("Decrypted Password:", decryptedPassword)
+
+		return decryptedUsername, decryptedPassword
 	else:
-		print("No entry found for the specified account.")
+		return("No entry found for the specified account.")
+
+	cursor.close()
 
 
 #GUI --> 8
